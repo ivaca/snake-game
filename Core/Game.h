@@ -15,6 +15,8 @@ public:
     Snake SnakeInstance;
     Food FoodInstance;
 
+    Sound EatSound;
+    Sound WallHitSound;
 
 
     void Draw();
@@ -28,6 +30,7 @@ public:
     void CheckCollisions();
 
     Game();
+   ~Game();
 
     inline int GetScore() {
         return Score;

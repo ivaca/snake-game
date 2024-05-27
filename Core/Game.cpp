@@ -16,6 +16,10 @@ Game::Game() {
     SnakeInstance = Snake();
     FoodInstance = Food();
 
+    InitAudioDevice();
+    EatSound = LoadSound("F:\\Dev\\C++\\SnakeGame\\Sounds\\eat.mp3");
+    WallHitSound = LoadSound("F:\\Dev\\C++\\SnakeGame\\Sounds\\wall.mp3");
+
 }
 
 void Game::Tick() {
@@ -28,6 +32,7 @@ void Game::CheckForFood() {
     if (Vector2Equals(SnakeInstance.GetBody()[0], FoodInstance.GetPosition())) {
         FoodInstance = FoodInstance.GetRandomPosition();
         SnakeInstance.AteFood();
+        PlaySound(EatSound);
         ++Score;
     }
 }
@@ -53,6 +58,17 @@ void Game::CheckCollisions() {
 }
 
 void Game::GameOver() {
-    CloseWindow();
+    PlaySound(WallHitSound);
+
+    SnakeInstance = Snake();
+    FoodInstance = Food();
+    Score = 0;
+}
+
+Game::~Game() {
+    //Unload all sounds
+    UnloadSound(EatSound);
+    UnloadSound(WallHitSound);
+    CloseAudioDevice();
 }
 

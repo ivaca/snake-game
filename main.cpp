@@ -6,9 +6,13 @@
 #include "Core/Snake.h"
 #include "Core/Game.h"
 
+struct Sales_Data {
+    unsigned Units_Sold;
+    double Revenue;
+    std::string BookNo;
+};
 
 int main() {
-
 
 
     InitWindow(2 * WINDOW_BORDER_OFFSET + CellSize * CellCount, 2 * WINDOW_BORDER_OFFSET + CellSize * CellCount,
@@ -23,8 +27,10 @@ int main() {
         GameInstance.Tick();
         GameInstance.Draw();
         ClearBackground(Green);
-        DrawRectangleLinesEx(Rectangle{float(WINDOW_BORDER_OFFSET-4),float(WINDOW_BORDER_OFFSET-4),CellSize*CellCount+8,CellSize*CellCount+8},4,DarkGreen);
-        DrawText(TextFormat("Score: %i",GameInstance.GetScore()),WINDOW_WIDTH/2,26,22, WHITE);
+        DrawRectangleLinesEx(
+                Rectangle{float(WINDOW_BORDER_OFFSET - 4), float(WINDOW_BORDER_OFFSET - 4), CellSize * CellCount + 8,
+                          CellSize * CellCount + 8}, 4, DarkGreen);
+        DrawText(TextFormat("Score: %i", GameInstance.GetScore()), WINDOW_WIDTH / 2, 26, 22, WHITE);
         EndDrawing();
     }
 
