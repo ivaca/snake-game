@@ -19,7 +19,6 @@ Game::Game() {
     InitAudioDevice();
     EatSound = LoadSound("F:\\Dev\\C++\\SnakeGame\\Sounds\\eat.mp3");
     WallHitSound = LoadSound("F:\\Dev\\C++\\SnakeGame\\Sounds\\wall.mp3");
-
 }
 
 void Game::Tick() {
